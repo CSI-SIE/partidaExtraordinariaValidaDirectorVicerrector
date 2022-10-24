@@ -12,7 +12,7 @@
       <td  mat-cell *matCellDef="let element let i = index">
         <label>
 
-              <ng-container *ngIf="columna!='montoReal' && columna!='costof' && columna!='costo' && columna!='descripcion' && columna!='validaDirectorVicerrector' && columna!='validaRectorDirAdmin' && columna!='validaDTI' && columna!='validacionDTI' && columna!='aplicada'">
+              <ng-container *ngIf="columna!='montoReal' && columna!='costof' && columna!='costo' && columna!='descripcion' && columna!='validaDirectorVicerrector' && columna!='validaVicerrector' && columna!='validaRectorDirAdmin' && columna!='validaDTI' && columna!='validacionDTI' && columna!='aplicada'">
                 {{ element[columna] }}
               </ng-container>
 
@@ -45,7 +45,26 @@
                   <span *ngIf="element[columna] == 0" class="material-icons blue-icon" matTooltip="En proceso de revisión"><!--EN PROCESO DE REVISIÓN-->
                     hourglass_top
                   </span>
+                  <p *ngIf="element[columna] == -1" matTooltip="No aplica"><!--N/A-->
+                    N/A
+                  </p>
               </ng-container>
+
+              <ng-container *ngIf="columna == 'validaVicerrector'" >
+                <span *ngIf="element[columna] == 1" class="material-icons green-icon" matTooltip="Aprobado"><!--APROBADO-->
+                  thumb_up
+                </span>
+                <span *ngIf="element[columna] == 2" class="material-icons red-icon" matTooltip="Rechazado"><!--RECHAZADO-->
+                  thumb_down
+                </span>
+                <span *ngIf="element[columna] == 0" class="material-icons blue-icon" matTooltip="En proceso de revisión"><!--EN PROCESO DE REVISIÓN-->
+                  hourglass_top
+                </span>
+
+                <p *ngIf="element[columna] == -1" matTooltip="No aplica"><!--N/A-->
+                  N/A
+                </p>
+            </ng-container>
 
               <ng-container *ngIf="columna == 'validaRectorDirAdmin'" >
 

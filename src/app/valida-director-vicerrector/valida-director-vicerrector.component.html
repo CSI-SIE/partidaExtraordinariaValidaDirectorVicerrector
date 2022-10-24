@@ -1,6 +1,15 @@
 <mat-toolbar color="primary">
-  Valida Director Vicerrector
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    Validación de director o vicerrector
+    <button (click)="abrirAyuda()" type="button" mat-raised-button >
+      <span class="material-icons">
+        help
+      </span>
+        Ayuda
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>
+
 
   <div class="container">
 
@@ -76,7 +85,7 @@
       </div>
 
     </div>
-    <button [routerLink]="['/inicio']"  type="submit" mat-flat-button color="primary">Cancelar</button>
+
     <div fxLayout="row"
     fxLayout.xs="column"
     fxLayoutAlign="center center">

@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/shared/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SesionSieComponent } from './sesion-sie/sesion-sie.component';
+import { AyudaVideoComponent } from './ayuda-video/ayuda-video.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SesionSieComponent
+    SesionSieComponent,
+    AyudaVideoComponent
   ],
   imports: [
     BrowserModule,

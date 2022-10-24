@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Periodo } from 'src/shared/models/periodo.model';
 import { resultadosValidaDirectorVicerrector } from 'src/shared/models/tabla.model';
+import { AyudaVideoComponent } from '../ayuda-video/ayuda-video.component';
 import { ValidaRechazaService } from '../services/validaRechaza.service';
 
 @Component({
@@ -53,21 +54,27 @@ export class ValidaDirectorVicerrectorComponent implements OnInit {
       descripcion: ['DESCRIPCION'],
       fechaSolicitud: ['FECHA SOLICITUD'],
       tipoPartida: ['TIPO SOLICITUD'],
-      validaDirectorVicerrector: ['ESTATUS DIR. / VICERRECTOR'],
-      fechaAutorizacion: ['FECHA REVISION DIR. / VICERRECTOR'],
+
+      validaDirectorVicerrector: ['ESTATUS DIRECTOR'],
+      fechaAutorizacion: ['FECHA REVISION DIRECTOR'],
+      costo: ['IMPORTE CON IVA INCLUIDO'],
+      validaVicerrector: ['ESTATUS VICERRECTOR'],
+      fechaAutorizacionVicerrector: ['FECHA REVISION VICERRECTOR'],
+
       validaRectorDirAdmin: ['ESTATUS RECTOR / DIR. ADMINISTRATIVO'],
       validaDTI: ['ESTATUS DTI'],
       verDirVic: [''],
-      paraMostrar: ['descripcion','fechaSolicitud','tipoPartida', 'validaDirectorVicerrector','fechaAutorizacion','validaRectorDirAdmin', 'validaDTI',  'verDirVic']
+      paraMostrar: ['descripcion', 'costo', 'fechaSolicitud', 'tipoPartida', 'validaDirectorVicerrector', 'validaVicerrector', 'validaRectorDirAdmin', 'validaDTI',  'verDirVic']
     }
-
+      // **   Quité   'fechaAutorizacion', 'fechaAutorizacionVicerrector'
     };
   //------------------------------------
 
   constructor(private _fb: UntypedFormBuilder,
     private _validaRechazaService: ValidaRechazaService,
     public _dialog: MatDialog,
-    private _router:Router
+    private _router:Router,
+
     ) {
 
       this.suscripciones = [];
@@ -140,7 +147,7 @@ export class ValidaDirectorVicerrectorComponent implements OnInit {
               this.opcionPorDefault = element.idPeriodo;
             }
           });
-          //console.log(data);
+          ////console.log(data);
         },
         error: (errores) =>{
           console.error(errores);
@@ -266,6 +273,14 @@ export class ValidaDirectorVicerrectorComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  abrirAyuda(){
+    let valor=0;
+    const dialogRef$ = this._dialog.open(AyudaVideoComponent,{
+      autoFocus: true,
+      data: {valor},
+    });
   }
 
 
